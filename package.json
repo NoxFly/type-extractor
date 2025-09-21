@@ -1,6 +1,6 @@
 {
     "name": "@noxfly/type-extractor",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "main": "dist/type-extractor.js",
     "types": "dist/type-extractor.d.ts",
     "scripts": {
