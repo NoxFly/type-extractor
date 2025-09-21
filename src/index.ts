@@ -24,19 +24,21 @@ async function main(): Promise<void> {
         tsConfigFilePath: join(PROJECT_PATH, "tsconfig.json"),
     });
 
-    project.addSourceFilesAtPaths(SCHEMAS_PATH);
+    // project.addSourceFilesAtPaths(SCHEMAS_PATH);
 
     const output: string[] = [];
     const imports: Map<string, Set<string>> = new Map<string, Set<string>>(); // modulePath -> Set<typeName>
     const exportedTypes: Set<string> = new Set<string>();
 
-    // First pass: collect all exported types
+    // First pass: collect all exported types only from schema files in SCHEMAS_PATH
+    const schemaFiles = project.addSourceFilesAtPaths(SCHEMAS_PATH);
+
+    // Remove any source files not in SCHEMAS_PATH from the project
+    const schemaFilePaths = new Set(schemaFiles.map(f => f.getFilePath()));
+
     for(const sourceFile of project.getSourceFiles()) {
-        for(const cls of sourceFile.getClasses()) {
-            const name = cls.getName();
-            
-            if(name)
-                exportedTypes.add(name);
+        if(!schemaFilePaths.has(sourceFile.getFilePath())) {
+            project.removeSourceFile(sourceFile);
         }
     }
 
