@@ -1,0 +1,40 @@
+{
+    "name": "@noxfly/type-extractor",
+    "version": "1.0.0",
+    "main": "dist/type-extractor.js",
+    "types": "dist/type-extractor.d.ts",
+    "scripts": {
+        "build": "tsup",
+        "prepublishOnly": "npm run build",
+        "prepush": "npm run build"
+    },
+    "bin": {
+        "extract-types": "./dist/typeExtractor.js"
+    },
+    "type": "commonjs",
+    "files": [
+        "dist"
+    ],
+    "keywords": [],
+    "author": "NoxFly",
+    "license": "MIT",
+    "description": "",
+    "engines": {
+        "node": ">= 20"
+    },
+    "devDependencies": {
+        "@stylistic/eslint-plugin": "^5.1.0",
+        "@types/node": "^24.5.2",
+        "@typescript-eslint/eslint-plugin": "^8.36.0",
+        "@typescript-eslint/parser": "^8.36.0",
+        "eslint": "^9.31.0",
+        "eslint-plugin-import": "^2.32.0",
+        "eslint-plugin-jsdoc": "^51.3.4",
+        "eslint-plugin-prefer-arrow": "^1.2.3",
+        "ts-morph": "^27.0.0",
+        "tsc-alias": "^1.8.16",
+        "tsup": "^8.5.0",
+        "typescript": "^5.8.3",
+        "typescript-eslint": "^8.36.0"
+    }
+}
